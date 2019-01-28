@@ -44,13 +44,18 @@ namespace StaitEstate.View.Controllers.Sales
 
 
         // Nominee Create
+
+        public class full_nominee_data_list {
+              public string age_of_nominee { get; set; }
+              public string sales_order_no { get; set; }
+        }
+
+
+        [HttpPost]
         [Route("NomineeCreate")]
-        public String Creating_nominee()
+        public JsonResult Creating_nominee(full_nominee_data_list full_nominee_data_list)
         {
-
-            string[] keys = Request.Form.AllKeys;
-            return "something";
-
+            return Json(full_nominee_data_list, JsonRequestBehavior.AllowGet);
         }
 
 

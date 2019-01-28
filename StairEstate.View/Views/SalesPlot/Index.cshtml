@@ -528,26 +528,19 @@
     function sendFormData() {
         let sales_order_no = $('.sales_order_no').val();
         let age_of_nominee = $('.age_of_nominee').val();
-        var results = new Array();
         var data_list = { "age_of_nominee": age_of_nominee, "sales_order_no": sales_order_no};
-        results.push(data_list);
-
-      
-
-        var postData = { full_nominee_data_list: results };
-
         // sending ajax request
         $.ajax({
             type: "POST",
             url: '/sales/plot/NomineeCreate',
-            data: JSON.stringify(postData), 
+            data: "{full_nominee_data_list: "+ JSON.stringify(data_list)+ "}", 
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             beforeSend: function () {
                 //Show(); // Show loader icon  
             },
             success: function (result) {
-                alert(result);
+                console.log(result);
             }, 
         });
 
