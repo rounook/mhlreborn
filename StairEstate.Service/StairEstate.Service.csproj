@@ -73,6 +73,7 @@
     <Compile Include="ILandService.cs" />
     <Compile Include="IMenuService.cs" />
     <Compile Include="IMouzaService.cs" />
+    <Compile Include="INomineeService.cs" />
     <Compile Include="IPlotAllocationDetailsService.cs" />
     <Compile Include="IPlotAllocationMasterService.cs" />
     <Compile Include="IPlotSalesDetailsService.cs" />

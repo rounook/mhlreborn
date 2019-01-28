@@ -9,7 +9,10 @@ namespace StaitEstate.View.Controllers.Sales
 {
     [RoutePrefix("sales/plot")]
     public class SalesPlotController : Controller
-    {
+    {   
+        // nominee 
+
+        private readonly INomineeService _nomineeService;
         private readonly IPlotSalesOrderService _plotSalesOrderService;
         private readonly IPlotSalesOrderDetailsService _plotSalesOrderDetailsService;
         private readonly IPlotSalesDetailsService _plotSalesDetailsService;
@@ -17,7 +20,8 @@ namespace StaitEstate.View.Controllers.Sales
         private readonly ICurrentStockDetailsService _currentStockDetailsService;
         private readonly IBranchService _branchService;
 
-        public SalesPlotController(IPlotSalesOrderService plotSalesOrderService,
+        public SalesPlotController(INomineeService nomineeService,
+            IPlotSalesOrderService plotSalesOrderService,
             IPlotSalesOrderDetailsService plotSalesOrderDetailsService,
             IPlotSalesDetailsService plotSalesDetailsService,
             IPlotCustomerService plotCustomerService,
@@ -25,6 +29,7 @@ namespace StaitEstate.View.Controllers.Sales
             IBranchService branchService
             )
         {
+            _nomineeService = nomineeService;
             _plotSalesOrderService = plotSalesOrderService;
             _plotSalesOrderDetailsService = plotSalesOrderDetailsService;
             _plotSalesDetailsService = plotSalesDetailsService;
@@ -55,6 +60,7 @@ namespace StaitEstate.View.Controllers.Sales
         [Route("NomineeCreate")]
         public JsonResult Creating_nominee(full_nominee_data_list full_nominee_data_list)
         {
+            ViewBag.nominee_list = _nomineeService.GetAll();
             return Json(full_nominee_data_list, JsonRequestBehavior.AllowGet);
         }
 
